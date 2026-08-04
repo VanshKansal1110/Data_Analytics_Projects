@@ -39,3 +39,36 @@ def packet_loss_impact_ratio(df):
                      low['Error_Rate_%'].mean()) * 100
 
     return {'defect_rate_change_%': defect_change, 'error_rate_change_%': error_change}
+
+def latency_sensitivity_score(df):
+    """
+    Slope of Production_Speed_units_per_hr vs Network_Latency_ms within each
+    Latency_Band. Tells you: within a given network condition, does speed
+    change as latency changes further?
+    """
+    results = {}
+    for band in df['Latency_Band'].unique():
+        subset = df[df['Latency_Band'] == band]
+        slope = np.polyfit(subset['Network_Latency_ms'],
+                            subset['Production_Speed_units_per_hr'], 1)[0]
+        results[band] = slope
+    return results
+
+
+def network_efficiency_threshold(df, step=2):
+    """
+    Finds the latency (ms) value where P(Efficiency_Status == 'Low') crosses 50%,
+    by binning latency into small increments and checking proportion Low in each bin.
+    Returns None if no bin crosses 50% (i.e. no clear threshold exists).
+    """
+    bins = np.arange(df['Network_Latency_ms'].min(), df['Network_Latency_ms'].max(), step)
+    df_binned = df.copy()
+    df_binned['Latency_Bin'] = pd.cut(df_binned['Network_Latency_ms'], bins)
+
+    prop_low = df_binned.groupby('Latency_Bin', observed=True)['Efficiency_Status'] \
+                         .apply(lambda x: (x == 'Low').mean())
+
+    crossing = prop_low[prop_low >= 0.5]
+    if crossing.empty:
+        return None
+    return crossing.index[0]
