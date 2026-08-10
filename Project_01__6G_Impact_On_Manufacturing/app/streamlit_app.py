@@ -5,8 +5,7 @@ import seaborn as sns
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-# sys.path.append('../src')
-# sys.path.append('src')
+
 from kpi import network_stability_index, packet_loss_impact_ratio
 
 st.set_page_config(page_title="6G Network vs Manufacturing Efficiency", layout="wide")
