@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '', 'src'))
 
 from kpi import network_stability_index, packet_loss_impact_ratio
 
@@ -15,7 +15,7 @@ st.caption("Thales Group — Smart Factory Analytics")
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv(os.path.join(os.path.dirname(__file__), '..', 'data', 'raw', 'Thales_Group_Manufacturing.csv'))    
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), '', 'data', 'raw', 'Thales_Group_Manufacturing.csv'))    
     df['Latency_Band'] = pd.qcut(df['Network_Latency_ms'], 3, labels=['Low', 'Medium', 'High'])
     df['PacketLoss_Band'] = pd.qcut(df['Packet_Loss_%'], 3, labels=['Low', 'Medium', 'High'])
     df['Network_Stability_Index'] = network_stability_index(df)
