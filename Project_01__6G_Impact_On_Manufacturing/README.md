@@ -36,8 +36,7 @@ affects how any model results should be read (accuracy alone would be misleading
 ```
 thales-6g-manufacturing/
 ├── data/
-│   ├── raw/                  # Original CSV, never edited
-│   └── processed/            # Cleaned/feature-engineered versions
+│   ├── raw/              # Original CSV, never edited (Already Cleaned/feature-engineered version)
 ├── notebooks/
 │   ├── 01_eda.ipynb              # Distributions, network quality bands
 │   ├── 02_statistical_analysis.ipynb  # Chi-square, correlations
@@ -101,5 +100,5 @@ for full methodology and `reports/executive_summary.md` for a stakeholder-facing
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/01_eda.ipynb   # for analysis
-streamlit run app/streamlit_app.py        # for the dashboard
+streamlit run streamlit_app.py        # for the dashboard
 ```
