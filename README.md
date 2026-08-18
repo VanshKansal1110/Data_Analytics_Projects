@@ -17,6 +17,11 @@ any project folder for the full write-up.
 **Summary:** Investigated whether 6G network performance (latency, packet loss) drives manufacturing efficiency in a smart factory, using 100,000 machine telemetry readings. Found no statistically significant relationship across five independent methods, with strong evidence the dataset was synthetically generated — a well-documented negative result including a caught-and-corrected data leakage issue.
 **Stack:** Python, Pandas, Scikit-learn, SciPy, Streamlit, Seaborn/Matplotlib
 
+### [Project 02 — Customer Segmentation & Churn Pattern Analytics](./Project_02__Bank_Churn_Segmentation)
+**Domain:** Retail banking / customer retention
+**Techniques:** EDA, customer segmentation, chi-square testing, interaction analysis, revenue-at-risk quantification, Random Forest classification, custom KPI design, interactive Streamlit dashboard
+**Summary:** Identified which customer segments carry the highest churn risk across 10,000 European bank customers. Found strong, statistically significant churn drivers (age, geography, gender, balance), with the highest-risk compound profile being German women aged 46-60 (60%+ churn). A Random Forest model independently confirmed the findings at 85% accuracy.
+**Stack:** Python, Pandas, Scikit-learn, SciPy, Streamlit, Seaborn/Matplotlib
 <!-- Add new projects below this line, following the same format -->
 
 <!--
@@ -48,9 +53,19 @@ Data_Analytics_Projects/
 │   ├── data/
 │   ├── notebooks/
 │   ├── src/
-│   ├── app/
 │   └── reports/
-├── Project_02__.../                   # Future projects follow the same structure
+│   ├── requirements.txt
+│   ├── streamlit_app.py
+|
+├── Project_02__Bank_Churn_Segmentation/
+│   ├── README.md                      # Full project-specific documentation
+│   ├── data/
+│   ├── notebooks/
+│   ├── src/
+│   └── reports/
+│   ├── requirements.txt
+│   ├── streamlit_app.py
+├── Project_03__.../                   # Future projects follow the same structure
 └── ...
 ```
 
